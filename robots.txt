@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oddjack0.github.io/tinytools-lab/sitemap.xml

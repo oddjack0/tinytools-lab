@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TinyTools Lab — Free Online Calculators &amp; Browser Tools</title>
+<meta name="description" content="Free forever browser tools: percentage, compound interest, mortgage and tip calculators, image resizer/compressor, word counter and case converter. Everything runs 100% in your browser — nothing is uploaded.">
+<meta property="og:title" content="TinyTools Lab — Free Online Calculators & Browser Tools">
+<meta property="og:description" content="Seven free tools that run entirely in your browser. No uploads, no sign-ups, no tracking of your data.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <h1>🧪 TinyTools Lab</h1>
+    <p class="tagline">Free forever. Every tool runs <strong>100% in your browser</strong> — nothing you type, calculate, or upload ever leaves your device. No accounts, no uploads, no nonsense.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="tabs" role="tablist" aria-label="Tools">
+    <button role="tab" id="tab-percentage" aria-controls="panel-percentage" aria-selected="true" data-tab="percentage">Percentage</button>
+    <button role="tab" id="tab-compound" aria-controls="panel-compound" aria-selected="false" tabindex="-1" data-tab="compound">Compound Interest</button>
+    <button role="tab" id="tab-mortgage" aria-controls="panel-mortgage" aria-selected="false" tabindex="-1" data-tab="mortgage">Mortgage</button>
+    <button role="tab" id="tab-tip" aria-controls="panel-tip" aria-selected="false" tabindex="-1" data-tab="tip">Tip &amp; Split</button>
+    <button role="tab" id="tab-image" aria-controls="panel-image" aria-selected="false" tabindex="-1" data-tab="image">Image Resizer</button>
+    <button role="tab" id="tab-words" aria-controls="panel-words" aria-selected="false" tabindex="-1" data-tab="words">Word Counter</button>
+    <button role="tab" id="tab-case" aria-controls="panel-case" aria-selected="false" tabindex="-1" data-tab="case">Case Converter</button>
+  </nav>
+
+  <!-- 1. Percentage Calculator -->
+  <section class="panel" role="tabpanel" id="panel-percentage" aria-labelledby="tab-percentage">
+    <h2>Percentage Calculator</h2>
+    <p class="help">Three everyday percentage problems in one place: finding a percent of a number (discounts, tax, tips), finding what percent one number is of another (scores, shares), and measuring percent change between two values (prices, growth, weight).</p>
+    <div class="grid">
+      <fieldset>
+        <legend>What is X% of Y?</legend>
+        <label>Percent (X) <input type="number" id="pct-x" value="20" step="any"></label>
+        <label>Number (Y) <input type="number" id="pct-y" value="150" step="any"></label>
+        <p class="result" aria-live="polite" id="pct-result-1">—</p>
+      </fieldset>
+      <fieldset>
+        <legend>X is what % of Y?</legend>
+        <label>Part (X) <input type="number" id="pct-part" value="45" step="any"></label>
+        <label>Whole (Y) <input type="number" id="pct-whole" value="60" step="any"></label>
+        <p class="result" aria-live="polite" id="pct-result-2">—</p>
+      </fieldset>
+      <fieldset>
+        <legend>Percent change</legend>
+        <label>From <input type="number" id="pct-from" value="80" step="any"></label>
+        <label>To <input type="number" id="pct-to" value="100" step="any"></label>
+        <p class="result" aria-live="polite" id="pct-result-3">—</p>
+      </fieldset>
+    </div>
+    <p class="faq"><strong>FAQ:</strong> How do I calculate a percent change? Subtract the old value from the new one, divide by the old value, and multiply by 100. A negative result means a decrease.</p>
+    <p class="cta"><a href="https://ko-fi.com/oddjack/shop" rel="noopener">Get the printable pack on Ko-fi</a> — math cheat-sheet worksheets &amp; more.</p>
+  </section>
+
+  <!-- 2. Compound Interest -->
+  <section class="panel" role="tabpanel" id="panel-compound" aria-labelledby="tab-compound" hidden>
+    <h2>Compound Interest Calculator</h2>
+    <p class="help">See how savings or investments grow when interest earns interest. Enter a starting amount, an annual rate, and how often interest compounds — then optionally add a monthly contribution to model a real savings habit.</p>
+    <div class="grid">
+      <div class="fields">
+        <label>Principal ($) <input type="number" id="ci-principal" value="1000" min="0" step="any"></label>
+        <label>Annual interest rate (%) <input type="number" id="ci-rate" value="10" step="any"></label>
+        <label>Years <input type="number" id="ci-years" value="10" min="0" step="any"></label>
+        <label>Compound frequency
+          <select id="ci-freq">
+            <option value="1" selected>Yearly</option>
+            <option value="2">Semi-annually</option>
+            <option value="4">Quarterly</option>
+            <option value="12">Monthly</option>
+            <option value="365">Daily</option>
+          </select>
+        </label>
+        <label>Monthly contribution ($) <input type="number" id="ci-monthly" value="0" min="0" step="any"></label>
+      </div>
+      <div class="results" aria-live="polite">
+        <p>Final balance <strong id="ci-final">—</strong></p>
+        <p>Interest earned <strong id="ci-interest">—</strong></p>
+        <p>Total contributions <strong id="ci-contrib">—</strong></p>
+      </div>
+    </div>
+    <p class="faq"><strong>FAQ:</strong> When are monthly contributions added? At the end of each month, after that month's growth is applied — a conservative estimate. Example check: $1,000 at 10% for 10 years, compounded yearly, grows to $2,593.74.</p>
+    <p class="cta"><a href="https://ko-fi.com/oddjack/shop" rel="noopener">Get the printable pack on Ko-fi</a> — savings trackers &amp; budget worksheets.</p>
+  </section>
+
+  <!-- 3. Mortgage -->
+  <section class="panel" role="tabpanel" id="panel-mortgage" aria-labelledby="tab-mortgage" hidden>
+    <h2>Mortgage Calculator</h2>
+    <p class="help">Estimate a monthly mortgage payment from the home price, your down payment, the interest rate, and the loan term. The result covers principal and interest only — property taxes, insurance, and HOA dues are extra in real life.</p>
+    <div class="grid">
+      <div class="fields">
+        <label>Home price ($) <input type="number" id="mg-price" value="375000" min="0" step="any"></label>
+        <label>Down payment ($) <input type="number" id="mg-down" value="75000" min="0" step="any"></label>
+        <label>Interest rate (%) <input type="number" id="mg-rate" value="6" step="any"></label>
+        <label>Term (years)
+          <select id="mg-term">
+            <option value="30" selected>30</option>
+            <option value="20">20</option>
+            <option value="15">15</option>
+            <option value="10">10</option>
+          </select>
+        </label>
+      </div>
+      <div class="results" aria-live="polite">
+        <p>Loan amount <strong id="mg-loan">—</strong></p>
+        <p>Monthly payment <strong id="mg-payment">—</strong></p>
+        <p>Total interest <strong id="mg-interest">—</strong></p>
+        <p>Total cost of loan <strong id="mg-total">—</strong></p>
+      </div>
+    </div>
+    <p class="faq"><strong>FAQ:</strong> What does a $300,000 loan at 6% for 30 years cost per month? About $1,798.65 in principal and interest — try it above with a $375,000 home and $75,000 down.</p>
+    <p class="cta"><a href="https://ko-fi.com/oddjack/shop" rel="noopener">Get the printable pack on Ko-fi</a> — home-buying checklists &amp; budget planners.</p>
+  </section>
+
+  <!-- 4. Tip Calculator -->
+  <section class="panel" role="tabpanel" id="panel-tip" aria-labelledby="tab-tip" hidden>
+    <h2>Tip Calculator &amp; Bill Splitter</h2>
+    <p class="help">Work out the tip and the grand total on any bill, then split it fairly between any number of people. Use the quick buttons for common tip rates or type your own.</p>
+    <div class="grid">
+      <div class="fields">
+        <label>Bill amount ($) <input type="number" id="tip-bill" value="60" min="0" step="any"></label>
+        <label>Tip (%) <input type="number" id="tip-pct" value="20" min="0" step="any"></label>
+        <div class="quick" role="group" aria-label="Quick tip percentages">
+          <button type="button" data-tip="10">10%</button>
+          <button type="button" data-tip="15">15%</button>
+          <button type="button" data-tip="18">18%</button>
+          <button type="button" data-tip="20">20%</button>
+          <button type="button" data-tip="25">25%</button>
+        </div>
+        <label>Split between (people) <input type="number" id="tip-people" value="2" min="1" step="1"></label>
+      </div>
+      <div class="results" aria-live="polite">
+        <p>Tip amount <strong id="tip-amount">—</strong></p>
+        <p>Total bill <strong id="tip-total">—</strong></p>
+        <p>Per person <strong id="tip-per">—</strong></p>
+      </div>
+    </div>
+    <p class="faq"><strong>FAQ:</strong> Should I tip on the pre-tax or post-tax amount? Custom says pre-tax, but tipping on the total is simpler and a little more generous — this calculator uses the bill amount you enter.</p>
+    <p class="cta"><a href="https://ko-fi.com/oddjack/shop" rel="noopener">Get the printable pack on Ko-fi</a> — handy reference cards &amp; trackers.</p>
+  </section>
+
+  <!-- 5. Image Resizer / Compressor -->
+  <section class="panel" role="tabpanel" id="panel-image" aria-labelledby="tab-image" hidden>
+    <h2>Image Resizer &amp; Compressor</h2>
+    <p class="help">Shrink an image right here in your browser — nothing is uploaded to any server. Resize it to a target width and/or re-encode it at a lower quality to cut the file size, then preview the result side-by-side and download it.</p>
+    <div class="fields">
+      <label>Choose an image <input type="file" id="img-file" accept="image/*"></label>
+      <label>Target width (px, blank = original) <input type="number" id="img-width" placeholder="e.g. 1200" min="1" step="1"></label>
+      <label>Quality: <span id="img-quality-val">80</span>% <input type="range" id="img-quality" min="10" max="100" value="80"></label>
+      <label>Output format
+        <select id="img-format">
+          <option value="image/jpeg" selected>JPEG (best for photos / smallest)</option>
+          <option value="image/webp">WebP</option>
+          <option value="image/png">PNG (lossless, no quality effect)</option>
+        </select>
+      </label>
+    </div>
+    <div class="img-compare">
+      <figure>
+        <figcaption>Original — <span id="img-orig-info">no file yet</span></figcaption>
+        <img id="img-orig-preview" alt="Original image preview">
+      </figure>
+      <figure>
+        <figcaption>Result — <span id="img-new-info">—</span></figcaption>
+        <img id="img-new-preview" alt="Resized image preview">
+      </figure>
+    </div>
+    <p><a id="img-download" class="button disabled" href="#" download="resized.jpg" aria-disabled="true">Download result</a></p>
+    <p class="faq"><strong>FAQ:</strong> Is my image really not uploaded? Correct — the file is processed with your browser's built-in canvas tools on your own device. Close the tab and it's gone.</p>
+    <p class="cta"><a href="https://ko-fi.com/oddjack/shop" rel="noopener">Get the printable pack on Ko-fi</a> — photo planners, calendars &amp; wall art.</p>
+  </section>
+
+  <!-- 6. Word Counter -->
+  <section class="panel" role="tabpanel" id="panel-words" aria-labelledby="tab-words" hidden>
+    <h2>Word Counter</h2>
+    <p class="help">Paste or type any text and get live counts of words, characters, sentences, and paragraphs — plus an estimated reading time. Great for essays, posts, speeches, and keeping your writing on target.</p>
+    <label class="sr-only" for="wc-text">Text to count</label>
+    <textarea id="wc-text" rows="9" placeholder="Start typing or paste your text here…"></textarea>
+    <div class="stats" aria-live="polite">
+      <p>Words <strong id="wc-words">0</strong></p>
+      <p>Characters <strong id="wc-chars">0</strong></p>
+      <p>Characters (no spaces) <strong id="wc-nospace">0</strong></p>
+      <p>Sentences <strong id="wc-sentences">0</strong></p>
+      <p>Paragraphs <strong id="wc-paras">0</strong></p>
+      <p>Reading time <strong id="wc-reading">0 min</strong></p>
+    </div>
+    <p class="faq"><strong>FAQ:</strong> How is reading time calculated? At an average adult reading speed of about 200 words per minute, rounded up to the nearest minute.</p>
+    <p class="cta"><a href="https://ko-fi.com/oddjack/shop" rel="noopener">Get the printable pack on Ko-fi</a> — writing trackers &amp; planner pages.</p>
+  </section>
+
+  <!-- 7. Case Converter -->
+  <section class="panel" role="tabpanel" id="panel-case" aria-labelledby="tab-case" hidden>
+    <h2>Case Converter</h2>
+    <p class="help">Fix aCCIDENTAL caps lock, tidy up headings, or make playful aLtErNaTiNg text. Type once, pick a style, and copy the result — the conversion happens instantly as you click.</p>
+    <label class="sr-only" for="cc-text">Text to convert</label>
+    <textarea id="cc-text" rows="6" placeholder="type your text here…">the quick brown fox jumps over the lazy dog. and it was a very good day.</textarea>
+    <div class="quick" role="group" aria-label="Case styles">
+      <button type="button" data-case="upper">UPPERCASE</button>
+      <button type="button" data-case="lower">lowercase</button>
+      <button type="button" data-case="title">Title Case</button>
+      <button type="button" data-case="sentence">Sentence case</button>
+      <button type="button" data-case="alt">aLtErNaTiNg</button>
+    </div>
+    <p><button type="button" id="cc-copy" class="button">Copy result</button> <span id="cc-status" aria-live="polite"></span></p>
+    <p class="faq"><strong>FAQ:</strong> What's the difference between Title Case and Sentence case? Title Case capitalizes every word; Sentence case only capitalizes the first letter of each sentence, like normal writing.</p>
+    <p class="cta"><a href="https://ko-fi.com/oddjack/shop" rel="noopener">Get the printable pack on Ko-fi</a> — social-media planners &amp; template packs.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>TinyTools Lab — free tools, zero uploads. Like them? <a href="https://ko-fi.com/oddjack/shop" rel="noopener">Support the shop on Ko-fi</a>.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
